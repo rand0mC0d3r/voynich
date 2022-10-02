@@ -1,16 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Typography } from '@mui/material';
 import React from 'react';
-import manuscript from '../../images.jpeg';
 import Flexbox from '../Flexbox';
+import Image from '../Image';
+import Word from '../Word';
 
 export default ({ index, lineSection }) =>
-  <Flexbox>
-    <Typography>{index}</Typography>
-    <div style={{
-      backgroundImage: `url(${manuscript})`,
-      width: '426px',
-      height: `${lineSection.height}px`,
-      backgroundPosition: `0px ${lineSection.position}px`,
-    }} />
+  <Flexbox direction='column'>
+    <Image height={lineSection.height} position={lineSection.position} />
+    <Flexbox direction='row' wrap="nowrap">
+      {lineSection.words && lineSection.words.map(word => <Word lineSection={lineSection} wordSection={word} />)}
+    </Flexbox>
   </Flexbox>
