@@ -4,10 +4,12 @@ import Flexbox from '../Flexbox';
 import Image from '../Image';
 import Word from '../Word';
 
-export default ({ index, lineSection }) =>
-  <Flexbox direction='column'>
-    <Image height={lineSection.height} position={lineSection.position} />
-    <Flexbox direction='row' wrap="nowrap">
-      {lineSection.words && lineSection.words.map(word => <Word lineSection={lineSection} wordSection={word} />)}
+export default ({ lineSection }) => {
+  const { height, position, words } = lineSection;
+  return <Flexbox direction='column' wrap="nowrap">
+    <Image {...{grayscale: true, hGuides: [26], height, position }} />
+    <Flexbox direction='row' wrap="nowrap" gap="large" justify='flex-start'>
+      {words?.map(word => <Word key={`${word.text}_${word.width}_${word.start}`} {...{ lineSection, word }} />)}
     </Flexbox>
   </Flexbox>
+}

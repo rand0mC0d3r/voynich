@@ -2,14 +2,27 @@
 import React from 'react';
 import manuscript from '../../images.jpeg';
 
-const width = 426
+const _width = 426
 const multiplier= 2
 
-export default ({ height, position }) =>
-      <div style={{
-        backgroundImage: `url(${manuscript})`,
-        width: `${width * multiplier}px`,
-        backgroundSize: `${width * multiplier}px`,
-        height: `${height * multiplier}px`,
-        backgroundPosition: `0px ${position * multiplier}px`,
-      }} />
+export default ({ grayscale = false, hGuides, start = 0, width, height, position }) => <>
+  <div style={{
+    position: 'relative',
+    backgroundImage: `url(${manuscript})`,
+    filter: grayscale ? 'grayscale(1)' : 'none',
+    width: `${(width || _width) * multiplier}px`,
+    backgroundSize: `${_width * multiplier}px`,
+    height: `${height * multiplier}px`,
+    backgroundPosition: `${start * multiplier}px ${position * multiplier}px`,
+  }}>
+    {hGuides && hGuides.map(hGuide => <div
+      style={{
+        border: '1px dotted black',
+        top: `${hGuide}px`,
+        position: 'absolute',
+        width: '100%'
+      }}
+      key={hGuide}
+    />)}
+  </div>
+</>

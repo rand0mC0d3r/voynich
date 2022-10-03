@@ -1,50 +1,58 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
-import { Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import Flexbox from '../Flexbox';
 import Line from '../Line';
 
-export default () => {
-  const [lineSections, setLineSections] = useState([
+const lineSections = [
     {
       height: 24,
       position: -7,
       words: [
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'fachys',
+          start: -4,
+          width: 50,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'ykal',
+          start: -58,
+          width: 31,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'ar',
+          start: -92,
+          width: 22,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'ataiin',
+          start: -115,
+          width: 46,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'Shol',
+          start: -168,
+          width: 35,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'Shory',
+          start: -210,
+          width: 41,
         },
         {
-          text: 'The',
-          position: 0,
-          width: 24,
+          text: 'cThres',
+          start: -255,
+          width: 52,
+        },
+        {
+          text: 'ykor',
+          start: -313,
+          width: 36,
+        },
+        {
+          text: 'Sholdy',
+          start: -358,
+          width: 50,
         },
       ]
     },
@@ -64,11 +72,8 @@ export default () => {
       height: 24,
       position: -85
     },
-  ]);
+  ]
 
-  return <div>
-    <Flexbox direction='column' gap="medium">
-      {lineSections.map((lineSection, index) => <Line key={index} index={index} lineSection={lineSection} />)}
-    </Flexbox>
-  </div>
-}
+export default () => <Flexbox direction='column' gap="medium" wrap="nowrap">
+    {lineSections.map(lineSection => <Line key={`${lineSection.height}_${lineSection.position}`} {...{ lineSection }} />)}
+  </Flexbox>

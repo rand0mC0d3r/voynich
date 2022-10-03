@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import './App.css';
 import Flexbox from './components/Flexbox';
 import Lines from './components/Lines';
@@ -7,10 +8,9 @@ function App() {
 
   return (
     <div style={{ backgroundColor: '#606164', width: '100%', height: '100%', position: 'absolute' }} >
-      <Flexbox gap="large" direction='row' justify='space-around'>
-        <div style={{ flex: '0 0 50%' }}>
-          <img style={{ width: '100%' }} src={manuscript} alt="logo" />
-        </div>
+      <Flexbox style={{padding: '32px'}} fullHeight={false} fullWidth={false} gap="large" direction='column' justify='space-around'>
+        <Typography variant="h5">Logographic / Ideograms / Voynich Manuscript</Typography>
+          <img style={{ width: '100%', filter: 'grayscale(1) opacity(0.6)' }} src={manuscript} alt="logo" />
         <div>
           <Lines />
         </div>

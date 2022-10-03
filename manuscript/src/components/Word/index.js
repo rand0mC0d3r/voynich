@@ -1,18 +1,15 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Typography } from '@mui/material';
 import React from 'react';
-import manuscript from '../../images.jpeg';
 import Flexbox from '../Flexbox';
+import Image from '../Image';
 
-const width = 426
-const multiplier= 2
+export default ({ word, lineSection }) => {
+  const { text, width, start } = word
+  const { position, height } = lineSection
 
-export default ({ wordSection, lineSection }) =>
-  <Flexbox>
-    {lineSection.height} x {lineSection.position}
-    {/* {JSON.stringify(lineSection.height)} */}
-    {/* {JSON.stringify(wordSection)} */}
-    {/* {position} x {width} */}
-    {/* {start} x {end} */}
-    {wordSection.text}
+  return <Flexbox direction='column' fullWidth={false} fullHeight={false} wrap="nowrap">
+    <Image {...{start, width, height, position}} />
+    <Typography>{text}</Typography>
   </Flexbox>
+}
